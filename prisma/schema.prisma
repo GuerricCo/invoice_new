@@ -1,0 +1,84 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  name      String
+  firstname String
+  mail      String   @unique
+  password  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  companies Company[]
+}
+
+model Company {
+  id           Int      @id @default(autoincrement())
+  name         String
+  calendarUrl  String
+  hourlyRate   Float
+  startDate    DateTime
+  endDate      DateTime
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  userId       Int
+  user         User     @relation(fields: [userId], references: [id])
+  
+  modules      Module[] // Ajout de la relation inverse
+
+  invoices     Invoice[]
+}
+
+
+model Module {
+  id          Int      @id @default(autoincrement())
+  name        String
+  description String
+  hourlyRate  Float
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  companyId   Int
+  company     Company  @relation(fields: [companyId], references: [id])
+  invoiceLines InvoiceLine[]
+}
+
+model Invoice {
+  id         Int      @id @default(autoincrement())
+  label      String
+  date       DateTime @default(now())
+  tvaRate    Float
+  total      Float
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  companyId  Int
+  company    Company  @relation(fields: [companyId], references: [id])
+  
+  invoiceLines InvoiceLine[]
+}
+
+model InvoiceLine {
+  id         Int     @id @default(autoincrement())
+  moduleId   Int
+  module     Module  @relation(fields: [moduleId], references: [id])
+
+  invoiceId  Int
+  invoice    Invoice @relation(fields: [invoiceId], references: [id])
+
+  hours      Float
+  unitPrice  Float
+  subtotal   Float
+}
