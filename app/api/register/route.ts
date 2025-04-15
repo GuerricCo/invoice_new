@@ -1,7 +1,7 @@
 // app/api/register/route.ts
 import { hash } from "bcryptjs"
 import { NextResponse } from "next/server"
-import { PrismaClient } from "@/generated/prisma"; // si alias "@/generated" fonctionne
+import { PrismaClient } from "@/generated/prisma";
 
 
 const prisma = new PrismaClient()
