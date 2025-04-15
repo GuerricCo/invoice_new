@@ -4,6 +4,21 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/src/lib/auth";
 import { prisma } from "@/src/lib/prisma";
 
+export async function GET() {
+  const session = await getServerSession(authOptions);
+  if (!session?.user?.id) {
+    return NextResponse.json({ error: "Non autorisé" }, { status: 401 });
+  }
+
+  const companies = await prisma.company.findMany({
+    where: {
+      userId: session.user.id,
+    },
+  });
+
+  return NextResponse.json(companies);
+}
+
 export async function POST(req: Request) {
   const session = await getServerSession(authOptions);
   if (!session) {
