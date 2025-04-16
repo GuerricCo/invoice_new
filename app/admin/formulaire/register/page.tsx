@@ -24,7 +24,7 @@ export default function RegisterPage() {
     if (res.ok) {
       router.push("/admin/formulaire/login")
     } else {
-      alert("Inscription échouée")
+      alert("Cet email existe déjà")
     }
   }
 
@@ -69,6 +69,14 @@ export default function RegisterPage() {
           >
             S'inscrire
           </Button>
+          <Button
+  type="button"
+  variant="outline"
+  className="w-full py-3 text-blue-500 border-blue-500 hover:bg-blue-50 rounded-lg"
+  onClick={() => router.push("/admin/formulaire/login")}
+>
+  Se connecter
+</Button>
         </form>
       </Card>
     </div>

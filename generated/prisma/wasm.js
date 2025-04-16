@@ -127,43 +127,13 @@ exports.Prisma.UserScalarFieldEnum = {
 exports.Prisma.CompanyScalarFieldEnum = {
   id: 'id',
   name: 'name',
+  mail: 'mail',
   calendarUrl: 'calendarUrl',
+  tvaRate: 'tvaRate',
   hourlyRate: 'hourlyRate',
-  startDate: 'startDate',
-  endDate: 'endDate',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   userId: 'userId'
-};
-
-exports.Prisma.ModuleScalarFieldEnum = {
-  id: 'id',
-  name: 'name',
-  description: 'description',
-  hourlyRate: 'hourlyRate',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt',
-  companyId: 'companyId'
-};
-
-exports.Prisma.InvoiceScalarFieldEnum = {
-  id: 'id',
-  label: 'label',
-  date: 'date',
-  tvaRate: 'tvaRate',
-  total: 'total',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt',
-  companyId: 'companyId'
-};
-
-exports.Prisma.InvoiceLineScalarFieldEnum = {
-  id: 'id',
-  moduleId: 'moduleId',
-  invoiceId: 'invoiceId',
-  hours: 'hours',
-  unitPrice: 'unitPrice',
-  subtotal: 'subtotal'
 };
 
 exports.Prisma.SortOrder = {
@@ -174,10 +144,7 @@ exports.Prisma.SortOrder = {
 
 exports.Prisma.ModelName = {
   User: 'User',
-  Company: 'Company',
-  Module: 'Module',
-  Invoice: 'Invoice',
-  InvoiceLine: 'InvoiceLine'
+  Company: 'Company'
 };
 
 /**

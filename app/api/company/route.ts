@@ -26,7 +26,7 @@ export async function POST(req: Request) {
   }
 
   const body = await req.json();
-  const { name, calendarUrl, hourlyRate, startDate, endDate, userId } = body;
+  const { name, calendarUrl, hourlyRate, tvaRate, mail, userId } = body;
 
   try {
     const company = await prisma.company.create({
@@ -34,8 +34,8 @@ export async function POST(req: Request) {
         name,
         calendarUrl,
         hourlyRate,
-        startDate: new Date(startDate),
-        endDate: new Date(endDate),
+        tvaRate,
+        mail,
         user: { connect: { id: userId } },
       },
     });

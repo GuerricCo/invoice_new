@@ -47,6 +47,7 @@ export default function LoginPage() {
             onChange={(e) => setPassword(e.target.value)} 
             className="w-full p-3 border rounded-md shadow-sm focus:ring-2 focus:ring-blue-500"
           />
+          
           <Button 
             type="submit" 
             variant="default" 
@@ -54,6 +55,14 @@ export default function LoginPage() {
           >
             Se connecter
           </Button>
+          <Button
+  type="button"
+  variant="outline"
+  className="w-full py-3 text-blue-500 border-blue-500 hover:bg-blue-50 rounded-lg"
+  onClick={() => router.push("/admin/formulaire/register")}
+>
+  S'inscrire
+</Button>
         </form>
       </Card>
     </div>

@@ -32,7 +32,8 @@ export const authOptions: AuthOptions = {
         return {
           id: user.id,
           name: user.name,
-          email: user.mail,
+          firstname: user.firstname,
+          mail: user.mail,
         }
       },
     }),
@@ -44,21 +45,27 @@ export const authOptions: AuthOptions = {
     signIn: "/login",
   },
   callbacks: {
-    async session({ session, token }) {
-        if (session?.user && token) {
-          session.user.id = token.id
-          session.user.email = token.email as string
-        }
-        return session
-      },
     async jwt({ token, user }) {
       if (user) {
         token.id = user.id as number
-        token.email = user.email
+        token.mail = user.mail
+        token.name = user.name
+        token.firstname = (user as any).firstname
       }
       return token
     },
-  },
+  
+    async session({ session, token }) {
+      if (session?.user && token) {
+        session.user.id = token.id
+        session.user.mail = token.mail as string
+        session.user.name = token.name as string
+        (session.user as any).firstname = token.firstname as string
+      }
+      return session
+    }
+  }
+,  
   secret: process.env.NEXTAUTH_SECRET,
 
 }

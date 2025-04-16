@@ -10,8 +10,8 @@ export default function CompanyForm({ userId }: { userId: number }) {
   const [name, setName] = useState("");
   const [calendarUrl, setCalendarUrl] = useState("");
   const [hourlyRate, setHourlyRate] = useState("");
-  const [startDate, setStartDate] = useState("");
-  const [endDate, setEndDate] = useState("");
+  const [tvaRate, setTvaRate] = useState("");
+  const [mail, setMail] = useState("");
   const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -22,9 +22,9 @@ export default function CompanyForm({ userId }: { userId: number }) {
       body: JSON.stringify({
         name,
         calendarUrl,
-        hourlyRate: parseFloat(hourlyRate),
-        startDate,
-        endDate,
+        hourlyRate: parseInt(hourlyRate, 10),
+        tvaRate: parseInt(tvaRate, 10),
+        mail,
         userId
       }),
     });
@@ -38,12 +38,28 @@ export default function CompanyForm({ userId }: { userId: number }) {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
-      <Input placeholder="Nom de l'entreprise" value={name} onChange={e => setName(e.target.value)} />
-      <Input placeholder="URL du calendrier" value={calendarUrl} onChange={e => setCalendarUrl(e.target.value)} />
-      <Input placeholder="Taux horaire" type="number" value={hourlyRate} onChange={e => setHourlyRate(e.target.value)} />
-      <Input placeholder="Date de début" type="date" value={startDate} onChange={e => setStartDate(e.target.value)} />
-      <Input placeholder="Date de fin" type="date" value={endDate} onChange={e => setEndDate(e.target.value)} />
-      <Button type="submit">Créer</Button>
-    </form>
+  <Input placeholder="Nom de l'entreprise" value={name} onChange={e => setName(e.target.value)} />
+  <Input placeholder="URL du calendrier" value={calendarUrl} onChange={e => setCalendarUrl(e.target.value)} />
+  <Input placeholder="Taux horaire" type="number" value={hourlyRate} onChange={e => setHourlyRate(e.target.value)} />
+  <Input placeholder="Taxe" type="number" value={tvaRate} onChange={e => setTvaRate(e.target.value)} />
+  <Input placeholder="Mail entreprise" type="email" value={mail} onChange={e => setMail(e.target.value)} />
+  
+  <Button
+    type="submit"
+    variant="default"
+    className="w-full py-3 text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:ring-blue-300 rounded-lg"
+  >
+    Créer
+  </Button>
+  <Button
+    type="button"
+    variant="outline"
+    onClick={() => router.push("/admin/formulaire/profil")}
+    className="w-full py-3 rounded-lg border border-gray-300 hover:bg-gray-100"
+  >
+    Retour au profil
+  </Button>
+</form>
+
   );
 }

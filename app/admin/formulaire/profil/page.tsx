@@ -35,12 +35,14 @@ export default function ProfilPage() {
   if (status === "loading") return <p>Chargement de la session...</p>
 
   return (
-    <div className="p-6 max-w-6xl mx-auto flex gap-8">
-      <Card className="w-1/3 p-6 space-y-4">
+    <div className="p-6 max-w-6xl mx-auto flex gap-8 h-[calc(50vh-50px)]">
+  <Card className="w-1/3 p-6 space-y-4 max-h-full overflow-y-auto">
+
         <h1 className="text-2xl font-bold">Bienvenue {session?.user?.name}</h1>
         <div>
-          <p><strong>Email:</strong> {session?.user?.email}</p>
-          <p><strong>ID:</strong> {session?.user?.id}</p>
+          <p><strong>Nom:</strong> {session?.user?.name}</p>
+          <p><strong>Prénom:</strong> {session?.user?.firstname}</p>
+          <p><strong>Email:</strong> {session?.user?.mail}</p>
         </div>
         <Button
           variant="destructive"
