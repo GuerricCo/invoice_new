@@ -39,6 +39,7 @@ export default function LoginPage() {
             value={mail} 
             onChange={(e) => setMail(e.target.value)} 
             className="w-full p-3 border rounded-md shadow-sm focus:ring-2 focus:ring-blue-500"
+            required
           />
           <Input 
             type="password" 
@@ -46,6 +47,7 @@ export default function LoginPage() {
             value={password} 
             onChange={(e) => setPassword(e.target.value)} 
             className="w-full p-3 border rounded-md shadow-sm focus:ring-2 focus:ring-blue-500"
+            required
           />
           
           <Button 
