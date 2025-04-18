@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { Card } from "./ui/card";
-import { icalFetchAction } from "@/src/actions/icalFetchAction"; // adapte le chemin si besoin
+import { icalFetchAction } from "@/src/actions/icalFetchAction";
 import Link from "next/link";
 
 const fetchEvents = async (calendarUrl: string, start: string, end: string) => {
