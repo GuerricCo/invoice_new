@@ -24,7 +24,7 @@ export async function icalFetchAction(calendarUrl: string, start: string, end: s
       throw new Error("Les événements sont manquants ou mal formés.");
     }
 
-    return data.events; // tu peux retourner directement events si tu veux simplifier côté client
+    return data.events;
   } catch (err) {
     console.error("Erreur iCal:", err);
     return { error: "Impossible de récupérer les données iCal" };

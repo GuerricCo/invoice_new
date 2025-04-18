@@ -54,6 +54,8 @@ export default function InvoiceClient({
   const [modeImpression, setModeImpression] = useState(false);
   const [startDate, setStartDate] = useState<string>('');
 const [endDate, setEndDate] = useState<string>('');
+const [reference, setReference] = useState("");
+
 
   useEffect(() => {
     const loadEvents = async () => {
@@ -83,6 +85,7 @@ const [endDate, setEndDate] = useState<string>('');
   const totalHours = filteredEvents.reduce((acc, event) => acc + event.totalHours, 0);
   const totalPriceTVA = totalHours * hourlyRate;
   const totalPrice = totalHours * hourlyRate * (1 - tvaRate / 100);
+  const TVA = totalHours * hourlyRate * (tvaRate/100);
 
   const handleAddEvent = () => {
     setEventList([...eventList, { summary: "", totalHours: 0 }]);
@@ -100,6 +103,12 @@ const [endDate, setEndDate] = useState<string>('');
     return (
       <div className="p-10">
   <h1 className="text-3xl font-bold mb-2">Facture</h1>
+  {reference && (
+  <p className="text-gray-600 mb-2">
+    Référence : {reference}
+  </p>
+)}
+
 
   {startDate && endDate && (
     <p className="text-gray-600 mb-6">
@@ -147,13 +156,18 @@ const [endDate, setEndDate] = useState<string>('');
     <span>{totalHours} heures</span>
   </div>
   <div className="flex justify-between">
-    <span className="font-medium">Prix total (TVA incluse) :</span>
-    <span>{totalPriceTVA.toFixed(2)} €</span>
-  </div>
-  <div className="flex justify-between">
-    <span className="font-medium">Prix total (sans TVA) :</span>
+    <span className="font-medium">Prix HT :</span>
     <span>{totalPrice.toFixed(2)} €</span>
   </div>
+  <div className="flex justify-between">
+    <span className="font-medium">TVA :</span>
+    <span>{TVA.toFixed(2)} €</span>
+  </div>
+  <div className="flex justify-between">
+    <span className="font-medium">Prix TTC :</span>
+    <span>{totalPriceTVA.toFixed(2)} €</span>
+  </div>
+  
 </div>
 
     );
@@ -162,6 +176,18 @@ const [endDate, setEndDate] = useState<string>('');
   return (
     <div className="max-w-4xl mx-auto mt-10 space-y-6">
       <h1 className="text-3xl font-bold mb-6">Facture</h1>
+      <div className="flex flex-col mb-6">
+  <label htmlFor="reference" className="block font-medium mb-1">Référence :</label>
+  <input
+    type="text"
+    id="reference"
+    value={reference}
+    onChange={(e) => setReference(e.target.value)}
+    className="border border-gray-300 rounded-lg p-3 w-full"
+    placeholder="Référence de la facture"
+  />
+</div>
+
 
       <div className="flex flex-col md:flex-row gap-6">
         <Card className="flex-1 p-4">
@@ -296,14 +322,19 @@ const [endDate, setEndDate] = useState<string>('');
         <span>{totalHours} heures</span>
       </div>
       <div className="flex justify-between">
-        <span className="font-medium">Prix total (TVA incluse) :</span>
+        <span className="font-medium">Prix HT :</span>
+          <span>{totalPrice.toFixed(2)} €</span>
+        </div>
+        <div className="flex justify-between">
+        <span className="font-medium">TVA :</span>
+          <span>{TVA.toFixed(2)} €</span>
+        </div>
+      <div className="flex justify-between">
+        <span className="font-medium">Prix TTC :</span>
           <span>{totalPriceTVA.toFixed(2)} €</span>
         </div>
 
-      <div className="flex justify-between">
-        <span className="font-medium">Prix total (sans TVA) :</span>
-          <span>{totalPrice.toFixed(2)} €</span>
-        </div>
+      
 
         <div className="space-y-4">
         <div className="flex flex-col gap-4">

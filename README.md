@@ -1,36 +1,80 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Invoice Generator
 
-## Getting Started
+**Invoice Generator** is a web application that allows users to easily generate invoices based on events retrieved from an iCal calendar.
 
-First, run the development server:
+## Main Features
+
+- User login and profile management
+- Company creation with an hourly rate and an iCal link
+- Automatic retrieval of events from an iCal calendar
+- Invoice generation based on events and worked hours
+- Automatic calculation of VAT and total amount
+
+## Technologies Used
+
+- [Next.js 15 (App Router)](https://nextjs.org/)
+- [React](https://react.dev/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Prisma ORM](https://www.prisma.io/)
+- [NextAuth.js](https://next-auth.js.org/)
+
+## Installation and Usage
+
+### 1. Clone the Project
+
+```bash
+git clone https://github.com/GuerricCo/invoice_new.git
+cd invoice_new
+```
+
+### 2. Install Dependencies
+
+```bash
+npm install
+```
+
+or
+
+```bash
+pnpm install
+```
+
+### 3. Configure the Environment
+
+Create a `.env` file at the root of the project and add the following:
+
+```env
+DATABASE_URL="file:./dev.db"
+NEXTAUTH_SECRET=your_strong_secret_key
+```
+
+(You can adapt this according to your setup.)
+
+### 4. Set up the Database
+
+If you are using Prisma:
+
+```bash
+npx prisma migrate dev --name init
+```
+
+### 5. Start the Project
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The application will be available at [http://localhost:3000].
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+src/
+  actions/         # Server-side functions
+  components/      # React components
+  lib/             # Prisma setup and other libraries
+  app/             # Project pages (Next.js App Router)
+```
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---

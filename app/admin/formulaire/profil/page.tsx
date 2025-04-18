@@ -79,7 +79,7 @@ export default function ProfilPage() {
     </div>
     <Link href={`/entreprise/${company.id}/invoice`}>
                 <Button variant="default" className="mt-4">
-                  Créer la fiche
+                  Créer une facture
                 </Button>
               </Link>
   </Card>
