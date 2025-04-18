@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { Card } from "./ui/card";
 import { icalFetchAction } from "@/src/actions/icalFetchAction"; // adapte le chemin si besoin
+import Link from "next/link";
 
 const fetchEvents = async (calendarUrl: string, start: string, end: string) => {
   if (!calendarUrl) return [];
@@ -28,7 +29,7 @@ type Company = {
   name: string;
   mail: string;
   adresse: string;
-  calendarUrl: string;  // Add this property
+  calendarUrl: string;
 };
 
 type Props = {
@@ -37,7 +38,7 @@ type Props = {
   tvaRate: number;
   client: Client;
   company: Company;
-  calendarUrl: string; // Ajouté ici
+  calendarUrl: string;
 };
 
 export default function InvoiceClient({
@@ -122,14 +123,22 @@ const [endDate, setEndDate] = useState<string>('');
   </div>
 
   <div className="mb-6">
-    <h2 className="text-xl font-semibold mb-2">Événements :</h2>
-    {filteredEvents.map((event, index) => (
-      <div key={index} className="flex justify-between">
-        <span>{event.summary}</span>
-        <span>{event.totalHours} heures</span>
+  <h2 className="text-xl font-semibold mb-2">Événements :</h2>
+  {filteredEvents.map((event, index) => (
+    <div key={index} className="flex justify-between items-center py-2 border-b">
+      <div className="flex-1">
+        <span className="block font-medium">{event.summary}</span>
       </div>
-    ))}
-  </div>
+      <div className="w-32 text-center">
+        <span>{event.totalHours}h</span>
+      </div>
+      <div className="w-32 text-right font-semibold">
+        {(event.totalHours * hourlyRate).toFixed(2)} €
+      </div>
+    </div>
+  ))}
+</div>
+
 
   <hr className="my-6" />
 
@@ -296,12 +305,28 @@ const [endDate, setEndDate] = useState<string>('');
           <span>{totalPrice.toFixed(2)} €</span>
         </div>
 
-        <button
-  onClick={handleGenerateInvoice}
-  className="mt-6 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition"
->
-  Générer la facture
-</button>
+        <div className="space-y-4">
+        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-4 items-center">
+  <button
+    onClick={handleGenerateInvoice}
+    className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition text-center"
+  >
+    Générer la facture
+  </button>
+
+  <Link
+    href="/admin/formulaire/profil"
+    className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition text-center"
+  >
+    Profil
+  </Link>
+</div>
+
+</div>
+
+</div>
+
 
       </div>
 
