@@ -2153,6 +2153,7 @@ export namespace Prisma {
     hourlyRate: number | null
     createdAt: Date | null
     updatedAt: Date | null
+    adresse: string | null
     userId: number | null
   }
 
@@ -2165,6 +2166,7 @@ export namespace Prisma {
     hourlyRate: number | null
     createdAt: Date | null
     updatedAt: Date | null
+    adresse: string | null
     userId: number | null
   }
 
@@ -2177,6 +2179,7 @@ export namespace Prisma {
     hourlyRate: number
     createdAt: number
     updatedAt: number
+    adresse: number
     userId: number
     _all: number
   }
@@ -2205,6 +2208,7 @@ export namespace Prisma {
     hourlyRate?: true
     createdAt?: true
     updatedAt?: true
+    adresse?: true
     userId?: true
   }
 
@@ -2217,6 +2221,7 @@ export namespace Prisma {
     hourlyRate?: true
     createdAt?: true
     updatedAt?: true
+    adresse?: true
     userId?: true
   }
 
@@ -2229,6 +2234,7 @@ export namespace Prisma {
     hourlyRate?: true
     createdAt?: true
     updatedAt?: true
+    adresse?: true
     userId?: true
     _all?: true
   }
@@ -2328,6 +2334,7 @@ export namespace Prisma {
     hourlyRate: number
     createdAt: Date
     updatedAt: Date
+    adresse: string
     userId: number
     _count: CompanyCountAggregateOutputType | null
     _avg: CompanyAvgAggregateOutputType | null
@@ -2359,6 +2366,7 @@ export namespace Prisma {
     hourlyRate?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    adresse?: boolean
     userId?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["company"]>
@@ -2372,6 +2380,7 @@ export namespace Prisma {
     hourlyRate?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    adresse?: boolean
     userId?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["company"]>
@@ -2385,6 +2394,7 @@ export namespace Prisma {
     hourlyRate?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    adresse?: boolean
     userId?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["company"]>
@@ -2398,10 +2408,11 @@ export namespace Prisma {
     hourlyRate?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    adresse?: boolean
     userId?: boolean
   }
 
-  export type CompanyOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "mail" | "calendarUrl" | "tvaRate" | "hourlyRate" | "createdAt" | "updatedAt" | "userId", ExtArgs["result"]["company"]>
+  export type CompanyOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "mail" | "calendarUrl" | "tvaRate" | "hourlyRate" | "createdAt" | "updatedAt" | "adresse" | "userId", ExtArgs["result"]["company"]>
   export type CompanyInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
   }
@@ -2426,6 +2437,7 @@ export namespace Prisma {
       hourlyRate: number
       createdAt: Date
       updatedAt: Date
+      adresse: string
       userId: number
     }, ExtArgs["result"]["company"]>
     composites: {}
@@ -2859,6 +2871,7 @@ export namespace Prisma {
     readonly hourlyRate: FieldRef<"Company", 'Int'>
     readonly createdAt: FieldRef<"Company", 'DateTime'>
     readonly updatedAt: FieldRef<"Company", 'DateTime'>
+    readonly adresse: FieldRef<"Company", 'String'>
     readonly userId: FieldRef<"Company", 'Int'>
   }
     
@@ -3305,6 +3318,7 @@ export namespace Prisma {
     hourlyRate: 'hourlyRate',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
+    adresse: 'adresse',
     userId: 'userId'
   };
 
@@ -3434,6 +3448,7 @@ export namespace Prisma {
     hourlyRate?: IntFilter<"Company"> | number
     createdAt?: DateTimeFilter<"Company"> | Date | string
     updatedAt?: DateTimeFilter<"Company"> | Date | string
+    adresse?: StringFilter<"Company"> | string
     userId?: IntFilter<"Company"> | number
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }
@@ -3447,6 +3462,7 @@ export namespace Prisma {
     hourlyRate?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    adresse?: SortOrder
     userId?: SortOrder
     user?: UserOrderByWithRelationInput
   }
@@ -3463,6 +3479,7 @@ export namespace Prisma {
     hourlyRate?: IntFilter<"Company"> | number
     createdAt?: DateTimeFilter<"Company"> | Date | string
     updatedAt?: DateTimeFilter<"Company"> | Date | string
+    adresse?: StringFilter<"Company"> | string
     userId?: IntFilter<"Company"> | number
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }, "id">
@@ -3476,6 +3493,7 @@ export namespace Prisma {
     hourlyRate?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    adresse?: SortOrder
     userId?: SortOrder
     _count?: CompanyCountOrderByAggregateInput
     _avg?: CompanyAvgOrderByAggregateInput
@@ -3496,6 +3514,7 @@ export namespace Prisma {
     hourlyRate?: IntWithAggregatesFilter<"Company"> | number
     createdAt?: DateTimeWithAggregatesFilter<"Company"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Company"> | Date | string
+    adresse?: StringWithAggregatesFilter<"Company"> | string
     userId?: IntWithAggregatesFilter<"Company"> | number
   }
 
@@ -3578,6 +3597,7 @@ export namespace Prisma {
     hourlyRate: number
     createdAt?: Date | string
     updatedAt?: Date | string
+    adresse: string
     user: UserCreateNestedOneWithoutCompaniesInput
   }
 
@@ -3590,6 +3610,7 @@ export namespace Prisma {
     hourlyRate: number
     createdAt?: Date | string
     updatedAt?: Date | string
+    adresse: string
     userId: number
   }
 
@@ -3601,6 +3622,7 @@ export namespace Prisma {
     hourlyRate?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    adresse?: StringFieldUpdateOperationsInput | string
     user?: UserUpdateOneRequiredWithoutCompaniesNestedInput
   }
 
@@ -3613,6 +3635,7 @@ export namespace Prisma {
     hourlyRate?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    adresse?: StringFieldUpdateOperationsInput | string
     userId?: IntFieldUpdateOperationsInput | number
   }
 
@@ -3625,6 +3648,7 @@ export namespace Prisma {
     hourlyRate: number
     createdAt?: Date | string
     updatedAt?: Date | string
+    adresse: string
     userId: number
   }
 
@@ -3636,6 +3660,7 @@ export namespace Prisma {
     hourlyRate?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    adresse?: StringFieldUpdateOperationsInput | string
   }
 
   export type CompanyUncheckedUpdateManyInput = {
@@ -3647,6 +3672,7 @@ export namespace Prisma {
     hourlyRate?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    adresse?: StringFieldUpdateOperationsInput | string
     userId?: IntFieldUpdateOperationsInput | number
   }
 
@@ -3795,6 +3821,7 @@ export namespace Prisma {
     hourlyRate?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    adresse?: SortOrder
     userId?: SortOrder
   }
 
@@ -3814,6 +3841,7 @@ export namespace Prisma {
     hourlyRate?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    adresse?: SortOrder
     userId?: SortOrder
   }
 
@@ -3826,6 +3854,7 @@ export namespace Prisma {
     hourlyRate?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    adresse?: SortOrder
     userId?: SortOrder
   }
 
@@ -4010,6 +4039,7 @@ export namespace Prisma {
     hourlyRate: number
     createdAt?: Date | string
     updatedAt?: Date | string
+    adresse: string
   }
 
   export type CompanyUncheckedCreateWithoutUserInput = {
@@ -4021,6 +4051,7 @@ export namespace Prisma {
     hourlyRate: number
     createdAt?: Date | string
     updatedAt?: Date | string
+    adresse: string
   }
 
   export type CompanyCreateOrConnectWithoutUserInput = {
@@ -4060,6 +4091,7 @@ export namespace Prisma {
     hourlyRate?: IntFilter<"Company"> | number
     createdAt?: DateTimeFilter<"Company"> | Date | string
     updatedAt?: DateTimeFilter<"Company"> | Date | string
+    adresse?: StringFilter<"Company"> | string
     userId?: IntFilter<"Company"> | number
   }
 
@@ -4126,6 +4158,7 @@ export namespace Prisma {
     hourlyRate: number
     createdAt?: Date | string
     updatedAt?: Date | string
+    adresse: string
   }
 
   export type CompanyUpdateWithoutUserInput = {
@@ -4136,6 +4169,7 @@ export namespace Prisma {
     hourlyRate?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    adresse?: StringFieldUpdateOperationsInput | string
   }
 
   export type CompanyUncheckedUpdateWithoutUserInput = {
@@ -4147,6 +4181,7 @@ export namespace Prisma {
     hourlyRate?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    adresse?: StringFieldUpdateOperationsInput | string
   }
 
   export type CompanyUncheckedUpdateManyWithoutUserInput = {
@@ -4158,6 +4193,7 @@ export namespace Prisma {
     hourlyRate?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    adresse?: StringFieldUpdateOperationsInput | string
   }
 
 

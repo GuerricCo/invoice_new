@@ -2,7 +2,6 @@ import { prisma } from "@/src/lib/prisma";
 import { icalFetchAction } from "@/src/actions/icalFetchAction";
 import InvoiceClient from "@/src/components/invoiceClient";
 
-
 type Props = {
   params: { id: string };
 };
@@ -10,7 +9,6 @@ type Props = {
 export default async function InvoicePage({ params }: Props) {
   const companyId = parseInt(params.id, 10);
   if (isNaN(companyId)) return <div>ID invalide</div>;
-
 
   const company = await prisma.company.findUnique({
     where: { id: companyId },
@@ -21,13 +19,14 @@ export default async function InvoicePage({ params }: Props) {
     return <div>Entreprise ou URL de calendrier introuvable.</div>;
   }
 
+  const startDate = "2025-01-01";
+  const endDate = "2025-12-31";
 
-  const data = await icalFetchAction(company.calendarUrl);
+  const data = await icalFetchAction(company.calendarUrl, startDate, endDate);
 
   if (!data || data.error) {
     return <div>Erreur lors du chargement des événements iCal.</div>;
   }
-
 
   return (
     <div>
@@ -37,6 +36,7 @@ export default async function InvoicePage({ params }: Props) {
         tvaRate={company.tvaRate} 
         client={company.user}
         company={company}
+        calendarUrl={company.calendarUrl}
       />
     </div>
   );

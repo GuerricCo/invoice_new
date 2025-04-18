@@ -12,6 +12,7 @@ export default function CompanyForm({ userId }: { userId: number }) {
   const [hourlyRate, setHourlyRate] = useState("");
   const [tvaRate, setTvaRate] = useState("");
   const [mail, setMail] = useState("");
+  const [adresse, setAdresse] = useState("");
   const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -25,6 +26,7 @@ export default function CompanyForm({ userId }: { userId: number }) {
         hourlyRate: parseInt(hourlyRate, 10),
         tvaRate: parseInt(tvaRate, 10),
         mail,
+        adresse,
         userId
       }),
     });
@@ -38,11 +40,38 @@ export default function CompanyForm({ userId }: { userId: number }) {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
-  <Input placeholder="Nom de l'entreprise" value={name} onChange={e => setName(e.target.value)} />
-  <Input placeholder="URL du calendrier" value={calendarUrl} onChange={e => setCalendarUrl(e.target.value)} />
-  <Input placeholder="Taux horaire" type="number" value={hourlyRate} onChange={e => setHourlyRate(e.target.value)} />
-  <Input placeholder="Taxe" type="number" value={tvaRate} onChange={e => setTvaRate(e.target.value)} />
-  <Input placeholder="Mail entreprise" type="email" value={mail} onChange={e => setMail(e.target.value)} />
+  <div className="space-y-4">
+  <div className="flex flex-col">
+    <label className="mb-1 font-medium text-gray-700">Nom de l'entreprise</label>
+    <Input value={name} onChange={e => setName(e.target.value)} required />
+  </div>
+
+  <div className="flex flex-col">
+    <label className="mb-1 font-medium text-gray-700">URL du calendrier</label>
+    <Input value={calendarUrl} onChange={e => setCalendarUrl(e.target.value)} required />
+  </div>
+
+  <div className="flex flex-col">
+    <label className="mb-1 font-medium text-gray-700">Taux horaire</label>
+    <Input type="number" value={hourlyRate} onChange={e => setHourlyRate(e.target.value)} required />
+  </div>
+
+  <div className="flex flex-col">
+    <label className="mb-1 font-medium text-gray-700">Taxe</label>
+    <Input type="number" value={tvaRate} onChange={e => setTvaRate(e.target.value)} required />
+  </div>
+
+  <div className="flex flex-col">
+    <label className="mb-1 font-medium text-gray-700">Mail entreprise</label>
+    <Input type="email" value={mail} onChange={e => setMail(e.target.value)} required />
+  </div>
+
+  <div className="flex flex-col">
+    <label className="mb-1 font-medium text-gray-700">Adresse</label>
+    <Input value={adresse} onChange={e => setAdresse(e.target.value)} required />
+  </div>
+</div>
+
   
   <Button
     type="submit"

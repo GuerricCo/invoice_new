@@ -1,10 +1,10 @@
 "use server";
 
-export async function icalFetchAction(url: string) {
-  if (!url) return null;
+export async function icalFetchAction(calendarUrl: string, start: string, end: string) {
+  if (!calendarUrl) return null;
 
-  const encodedUrl = encodeURIComponent(url);
-  const apiUrl = `https://ical.mathieutu.dev/json?from=2025-04-12&to=2025-04-26&summary=&sort=date-asc&grouped=on&url=${encodedUrl}`;
+  const encodedUrl = encodeURIComponent(calendarUrl);
+  const apiUrl = `https://ical.mathieutu.dev/json?from=${start}&to=${end}&summary=&sort=date-asc&grouped=on&url=${encodedUrl}`;
 
   try {
     const res = await fetch(apiUrl);
@@ -19,12 +19,12 @@ export async function icalFetchAction(url: string) {
     }
 
     const data = await res.json();
-    
+
     if (!data || !Array.isArray(data.events)) {
       throw new Error("Les événements sont manquants ou mal formés.");
     }
 
-    return data;
+    return data.events; // tu peux retourner directement events si tu veux simplifier côté client
   } catch (err) {
     console.error("Erreur iCal:", err);
     return { error: "Impossible de récupérer les données iCal" };

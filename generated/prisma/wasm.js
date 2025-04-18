@@ -133,6 +133,7 @@ exports.Prisma.CompanyScalarFieldEnum = {
   hourlyRate: 'hourlyRate',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
+  adresse: 'adresse',
   userId: 'userId'
 };
 

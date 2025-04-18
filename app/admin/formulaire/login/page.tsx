@@ -30,43 +30,50 @@ export default function LoginPage() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 py-10">
       <Card className="p-8 shadow-lg rounded-lg w-full sm:max-w-md mx-auto bg-white">
-        <h2 className="text-2xl font-bold text-center mb-6">Se connecter</h2>
+  <h2 className="text-2xl font-bold text-center mb-6">Se connecter</h2>
 
-        <form onSubmit={handleSubmit} className="space-y-6">
-          <Input 
-            type="email" 
-            placeholder="Email" 
-            value={mail} 
-            onChange={(e) => setMail(e.target.value)} 
-            className="w-full p-3 border rounded-md shadow-sm focus:ring-2 focus:ring-blue-500"
-            required
-          />
-          <Input 
-            type="password" 
-            placeholder="Mot de passe" 
-            value={password} 
-            onChange={(e) => setPassword(e.target.value)} 
-            className="w-full p-3 border rounded-md shadow-sm focus:ring-2 focus:ring-blue-500"
-            required
-          />
-          
-          <Button 
-            type="submit" 
-            variant="default" 
-            className="w-full py-3 text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:ring-blue-300 rounded-lg"
-          >
-            Se connecter
-          </Button>
-          <Button
-  type="button"
-  variant="outline"
-  className="w-full py-3 text-blue-500 border-blue-500 hover:bg-blue-50 rounded-lg"
-  onClick={() => router.push("/admin/formulaire/register")}
->
-  S'inscrire
-</Button>
-        </form>
-      </Card>
+  <form onSubmit={handleSubmit} className="space-y-6">
+    <div className="flex flex-col">
+      <label className="mb-1 font-medium text-gray-700">Email</label>
+      <Input 
+        type="email" 
+        value={mail} 
+        onChange={(e) => setMail(e.target.value)} 
+        className="w-full p-3 border rounded-md shadow-sm focus:ring-2 focus:ring-blue-500"
+        required
+      />
+    </div>
+
+    <div className="flex flex-col">
+      <label className="mb-1 font-medium text-gray-700">Mot de passe</label>
+      <Input 
+        type="password" 
+        value={password} 
+        onChange={(e) => setPassword(e.target.value)} 
+        className="w-full p-3 border rounded-md shadow-sm focus:ring-2 focus:ring-blue-500"
+        required
+      />
+    </div>
+
+    <Button 
+      type="submit" 
+      variant="default" 
+      className="w-full py-3 text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:ring-blue-300 rounded-lg"
+    >
+      Se connecter
+    </Button>
+
+    <Button
+      type="button"
+      variant="outline"
+      className="w-full py-3 text-blue-500 border-blue-500 hover:bg-blue-50 rounded-lg"
+      onClick={() => router.push("/admin/formulaire/register")}
+    >
+      S'inscrire
+    </Button>
+  </form>
+</Card>
+
     </div>
   )
 }
