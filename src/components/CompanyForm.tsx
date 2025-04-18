@@ -41,36 +41,48 @@ export default function CompanyForm({ userId }: { userId: number }) {
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
   <div className="space-y-4">
-  <div className="flex flex-col">
-    <label className="mb-1 font-medium text-gray-700">Nom de l'entreprise</label>
-    <Input value={name} onChange={e => setName(e.target.value)} required />
-  </div>
+    <div className="flex flex-col">
+      <label className="mb-1 font-medium text-gray-700">
+        Nom de l'entreprise <span className="text-red-500">*</span>
+      </label>
+      <Input value={name} onChange={e => setName(e.target.value)} required />
+    </div>
 
-  <div className="flex flex-col">
-    <label className="mb-1 font-medium text-gray-700">URL du calendrier</label>
-    <Input value={calendarUrl} onChange={e => setCalendarUrl(e.target.value)} required />
-  </div>
+    <div className="flex flex-col">
+      <label className="mb-1 font-medium text-gray-700">
+        URL du calendrier <span className="text-red-500">*</span>
+      </label>
+      <Input value={calendarUrl} onChange={e => setCalendarUrl(e.target.value)} required />
+    </div>
 
-  <div className="flex flex-col">
-    <label className="mb-1 font-medium text-gray-700">Taux horaire</label>
-    <Input type="number" value={hourlyRate} onChange={e => setHourlyRate(e.target.value)} required />
-  </div>
+    <div className="flex flex-col">
+      <label className="mb-1 font-medium text-gray-700">
+        Taux horaire <span className="text-red-500">*</span>
+      </label>
+      <Input type="number" value={hourlyRate} onChange={e => setHourlyRate(e.target.value)} required />
+    </div>
 
-  <div className="flex flex-col">
-    <label className="mb-1 font-medium text-gray-700">Taxe</label>
-    <Input type="number" value={tvaRate} onChange={e => setTvaRate(e.target.value)} required />
-  </div>
+    <div className="flex flex-col">
+      <label className="mb-1 font-medium text-gray-700">
+        Taxe <span className="text-red-500">*</span>
+      </label>
+      <Input type="number" value={tvaRate} onChange={e => setTvaRate(e.target.value)} required />
+    </div>
 
-  <div className="flex flex-col">
-    <label className="mb-1 font-medium text-gray-700">Mail entreprise</label>
-    <Input type="email" value={mail} onChange={e => setMail(e.target.value)} required />
-  </div>
+    <div className="flex flex-col">
+      <label className="mb-1 font-medium text-gray-700">
+        Mail entreprise <span className="text-red-500">*</span>
+      </label>
+      <Input type="email" value={mail} onChange={e => setMail(e.target.value)} required />
+    </div>
 
-  <div className="flex flex-col">
-    <label className="mb-1 font-medium text-gray-700">Adresse</label>
-    <Input value={adresse} onChange={e => setAdresse(e.target.value)} required />
+    <div className="flex flex-col">
+      <label className="mb-1 font-medium text-gray-700">
+        Adresse <span className="text-red-500">*</span>
+      </label>
+      <Input value={adresse} onChange={e => setAdresse(e.target.value)} required />
+    </div>
   </div>
-</div>
 
   
   <Button

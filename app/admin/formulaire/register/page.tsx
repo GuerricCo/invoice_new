@@ -30,55 +30,65 @@ export default function RegisterPage() {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 py-10">
-      <Card className="p-8 shadow-lg rounded-lg w-full sm:max-w-md mx-auto bg-white">
-        <h2 className="text-2xl font-bold text-center mb-6">Créer un compte</h2>
-        
-        <form onSubmit={handleSubmit} className="space-y-6">
-        <div className="flex flex-col space-y-4">
-  <div className="flex flex-col">
-    <label className="mb-1 font-medium text-gray-700">Nom</label>
-    <Input 
-      type="text" 
-      value={name} 
-      onChange={(e) => setName(e.target.value)} 
-      className="w-full p-3 border rounded-md shadow-sm focus:ring-2 focus:ring-blue-500"
-      required
-    />
-  </div>
+  <Card className="p-8 shadow-lg rounded-lg w-full sm:max-w-md mx-auto bg-white">
+    <h2 className="text-2xl font-bold text-center mb-6">Créer un compte</h2>
 
-  <div className="flex flex-col">
-    <label className="mb-1 font-medium text-gray-700">Prénom</label>
-    <Input 
-      type="text" 
-      value={firstname} 
-      onChange={(e) => setFirstname(e.target.value)} 
-      className="w-full p-3 border rounded-md shadow-sm focus:ring-2 focus:ring-blue-500"
-      required
-    />
-  </div>
+    <form onSubmit={handleSubmit} className="space-y-6">
+      <div className="flex flex-col space-y-4">
+        <div className="flex flex-col">
+          <label className="mb-1 font-medium text-gray-700">
+            Nom <span className="text-red-500">*</span>
+          </label>
+          <Input 
+            type="text" 
+            value={name} 
+            onChange={(e) => setName(e.target.value)} 
+            className="w-full p-3 border rounded-md shadow-sm focus:ring-2 focus:ring-blue-500"
+            required
+          />
+        </div>
 
-  <div className="flex flex-col">
-    <label className="mb-1 font-medium text-gray-700">Email</label>
-    <Input 
-      type="email" 
-      value={mail} 
-      onChange={(e) => setMail(e.target.value)} 
-      className="w-full p-3 border rounded-md shadow-sm focus:ring-2 focus:ring-blue-500"
-      required
-    />
-  </div>
+        <div className="flex flex-col">
+          <label className="mb-1 font-medium text-gray-700">
+            Prénom <span className="text-red-500">*</span>
+          </label>
+          <Input 
+            type="text" 
+            value={firstname} 
+            onChange={(e) => setFirstname(e.target.value)} 
+            className="w-full p-3 border rounded-md shadow-sm focus:ring-2 focus:ring-blue-500"
+            required
+          />
+        </div>
 
-  <div className="flex flex-col">
-    <label className="mb-1 font-medium text-gray-700">Mot de passe</label>
-    <Input 
-      type="password" 
-      value={password} 
-      onChange={(e) => setPassword(e.target.value)} 
-      className="w-full p-3 border rounded-md shadow-sm focus:ring-2 focus:ring-blue-500"
-      required
-    />
-  </div>
-</div>
+        <div className="flex flex-col">
+          <label className="mb-1 font-medium text-gray-700">
+            Email <span className="text-red-500">*</span>
+          </label>
+          <Input 
+            type="email" 
+            value={mail} 
+            onChange={(e) => setMail(e.target.value)} 
+            className="w-full p-3 border rounded-md shadow-sm focus:ring-2 focus:ring-blue-500"
+            required
+          />
+        </div>
+
+        <div className="flex flex-col">
+          <label className="mb-1 font-medium text-gray-700">
+            Mot de passe <span className="text-red-500">*</span>
+          </label>
+          <Input 
+            type="password" 
+            value={password} 
+            onChange={(e) => setPassword(e.target.value)} 
+            className="w-full p-3 border rounded-md shadow-sm focus:ring-2 focus:ring-blue-500"
+            required
+          />
+        </div>
+      </div>
+
+
 
           <Button 
             type="submit" 
